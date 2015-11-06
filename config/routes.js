@@ -33,7 +33,8 @@ module.exports.routes = {
    ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    controller: 'ScrapeController',
+    action: 'home'
   },
   'GET /random': {
     controller: 'ScrapeController',

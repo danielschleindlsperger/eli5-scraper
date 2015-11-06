@@ -9,8 +9,8 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-module.exports.bootstrap = function (cb) {
-  //ScrapeService.scrapeFrontpage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=all');
+module.exports.bootstrap = function(cb) {
+  ScrapeService.scrapeFrontpage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=all');
   // var CronJob = require('cron').CronJob;
   // var job = new CronJob('0-59/5 * * * *', function () {
   //   ScrapeService.test();

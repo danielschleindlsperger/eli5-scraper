@@ -1,9 +1,4 @@
 module.exports = {
-  types: {
-    size: function () {
-      return true;
-    }
-  },
   connection: 'eli5_mysql',
   attributes: {
     scrapeId: {
@@ -20,14 +15,8 @@ module.exports = {
     topAnswer: {
       type: 'text'
     },
-    topAnswerUpvotes: {
-      type: 'integer'
-    },
     topAnswerSubmitter: {
       type: 'string'
-    },
-    answered: {
-      type: 'boolean'
     }
   }
 };
