@@ -1,18 +1,17 @@
-$(document).ready(function () {
+$(document).ready(function() {
   share.addURI();
-  share.selectInput();
-  $('#input-share-url').click(function (event_details) {
+  share.initClipboard();
+  $('#input-share-url').click(function(event_details) {
     $(this).select();
   });
 });
 var share = {
-  input: $('#input-share-url'),
-  addURI: function () {
+  input: document.querySelector('#input-share-url'),
+  addURI: function() {
     var url = window.location.href;
-    share.input.val(url);
+    share.input.value = url;
   },
-  selectInput: function () {
-
-
+  initClipboard: function() {
+    var clipboard = new Clipboard('.select-input');
   }
 };

@@ -15,20 +15,13 @@ module.exports = {
   // Parse HTML for urls to individual posts
   parseFrontpage: function(html) {
     $ = cheerio.load(html);
-    /*
-        if ('.entry'.length === 0) {
-          console.log('\n\ncouldnt\'t retrieve posts from page. Exiting loop.\n\n');
-          return;
-        }
-
-        */
     $('.entry').each(function(index) {
       var commentUrl = 'http://reddit.com' + $(this).find('a.title').attr('href') + '?limit=1&sort=top';
       console.log(commentUrl);
       ScrapeService.scrapeThread(commentUrl);
     });
-    var nextURL = $('div.nav-buttons > span.nextprev > a').attr('href');
-    //  ScrapeService.scrapeFrontpage(nextURL);
+    var nextURL = $('div.nav-buttons > span.nextprev > a').filter('[rel="nofollow next"]').attr('href');
+    ScrapeService.scrapeFrontpage(nextURL);
   },
   // GET HTML for a singular post
   scrapeThread: function(commentUrl) {

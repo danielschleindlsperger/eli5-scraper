@@ -49,14 +49,15 @@
         <div class="form-group form-group-lg">
           <label class="col-xs-1 col-xs-offset-1 control-label" for="input-share-url">URL</label>
           <div class="col-xs-6">
-            <input class="form-control" id="input-share-url" placeholder="" type="text">
+            <input class="form-control" value="" id="input-share-url" placeholder="" type="text">
           </div>
           <div class="col-xs-3">
-            <button class="btn btn-default btn-lg" class="select-input">
-              <span aria-hidden="true" class="glyphicon glyphicon-copy"></span>
-              &nbsp;Copy</button>
+            <button class="btn btn-default btn-lg select-input" type="button" data-clipboard-target="#input-share-url">
+              <span aria-hidden="true" class="glyphicon glyphicon-copy"></span>Copy</button>
           </div>
         </div>
       </form>
     </div>
   </div>
+</div>
+<%- include /../footer.ejs %>
