@@ -43,6 +43,9 @@ module.exports.routes = {
   'GET /scrape/:scrape_id': {
     controller: 'ScrapeController',
     action: 'index'
+  },
+  '/legal': {
+    view: 'legal'
   }
 
   /***************************************************************************

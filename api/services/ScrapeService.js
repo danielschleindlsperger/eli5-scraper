@@ -21,7 +21,10 @@ module.exports = {
       ScrapeService.scrapeThread(commentUrl);
     });
     var nextURL = $('div.nav-buttons > span.nextprev > a').filter('[rel="nofollow next"]').attr('href');
-    ScrapeService.scrapeFrontpage(nextURL);
+    // only scrape more pages if they are Top of all time
+    if (nextURL.indexOf('t=all') != -1) {
+      ScrapeService.scrapeFrontpage(nextURL);
+    }
   },
   // GET HTML for a singular post
   scrapeThread: function(commentUrl) {
@@ -46,6 +49,10 @@ module.exports = {
     var topAnswer = comment.find('div.usertext-body > div.md').html();
     // Fix links to refer to reddit
     topAnswer = HelperService.escapeRedditLinks(topAnswer);
+    if (!topAnswer) {
+      console.log('\n\nComment was deleted, moving to next post\n\n');
+      return;
+    }
     var topAnswerSubmitter = comment.find('p.tagline > a.author').text();
 
     // Check if dataset is complete

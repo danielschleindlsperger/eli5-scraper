@@ -2,7 +2,9 @@
 <div class="container" onload=share.addURI()>
   <div class="row">
     <div class="col-xs-12 title">
-      <h1>ELI5 Scrapes</h1>
+      <a href="/">
+        <h1>ELI5 Scrapes</h1>
+      </a>
     </div>
   </div>
   <div class="row">
@@ -52,8 +54,8 @@
             <input class="form-control" value="" id="input-share-url" placeholder="" type="text">
           </div>
           <div class="col-xs-3">
-            <button class="btn btn-default btn-lg select-input" type="button" data-clipboard-target="#input-share-url">
-              <span aria-hidden="true" class="glyphicon glyphicon-copy"></span>Copy</button>
+            <button class="btn btn-default btn-lg select-input" type="button" data-clipboard-target="#input-share-url" data-toggle="tooltip">
+              <span aria-hidden=" true " class="glyphicon glyphicon-copy "></span>Copy</button>
           </div>
         </div>
       </form>
@@ -61,3 +63,4 @@
   </div>
 </div>
 <%- include /../footer.ejs %>
+  <script src="/js/share.js"></script>
