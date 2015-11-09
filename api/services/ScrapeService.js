@@ -22,9 +22,15 @@ module.exports = {
     });
     var nextURL = $('div.nav-buttons > span.nextprev > a').filter('[rel="nofollow next"]').attr('href');
     // only scrape more pages if they are Top of all time
-    if (nextURL.indexOf('t=all') != -1) {
-      ScrapeService.scrapeFrontpage(nextURL);
+    try {
+      if (nextURL.indexOf('t=all') != -1) {
+        ScrapeService.scrapeFrontpage(nextURL);
+      }
+    } catch (e) {
+      console.log('There was an error with the URL of the next page.\nError: ', e, '\n');
+      return;
     }
+
   },
   // GET HTML for a singular post
   scrapeThread: function (commentUrl) {
@@ -41,12 +47,18 @@ module.exports = {
   // Parse HTML of singular link and return its title, upvotes, the top comments, the top commenters, its answered status and the comment upvotes
   parseThread: function (html, redditCommentId) {
     $ = cheerio.load(html);
-    var titleId = '#thing_t3_' + redditCommentId;
-    var title = $('title').text().replace(' : explainlikeimfive', '');
-    var upvotes = $(titleId + '> div.midcol > div.score.unvoted').text();
-    // Helper variable comment for everything about the comment and not the OP
-    var comment = $('div.comment');
-    var topAnswer = comment.find('div.usertext-body > div.md').html();
+    try {
+      var titleId = '#thing_t3_' + redditCommentId;
+      var title = $('title').text().replace(' : explainlikeimfive', '');
+      var upvotes = $(titleId + '> div.midcol > div.score.unvoted').text();
+      // Helper variable comment for everything about the comment and not the OP
+      var comment = $('div.comment');
+      var topAnswer = comment.find('div.usertext-body > div.md').html();
+    } catch (e) {
+      console.log('There was an error parsing the thread.\nError: ', e, '\n');
+      return;
+    }
+
     // Fix links to refer to reddit
     topAnswer = HelperService.escapeRedditLinks(topAnswer);
     if (!topAnswer) {
