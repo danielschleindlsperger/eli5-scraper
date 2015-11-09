@@ -1,23 +1,25 @@
-@darkest: #003a21;
-@dark: #0f5738;
+@darkest: #001809;
+@dark: #248b6c;
 @medium: #277554;
 @light: #499273;
-@lightest: #75af96;
+@lightest: #dffff5;
 body {
   font-family: Lato, Arial, sans-serif;
-  font-size: 2rem;
+  font-size  : 2rem;
 }
 h1 {
-  font-size: 5rem;
+  font-size : 5rem;
   text-align: center;
-  color: #000;
+  color     : #000;
 }
 h2 {
   text-align: left;
 }
 a {
+  color: @dark;
   &:hover {
     text-decoration: none;
+    color          : #000;
   }
 }
 .row {
@@ -28,15 +30,27 @@ a {
 }
 .share-title {
   text-align: center;
-  font-size: 2rem;
+  font-size : 2rem;
 }
 .btn-default {
   background-color: @dark;
-  color: #fff;
+  color           : #fff;
+  border-color    : transparent;
   &:hover {
-    background-color: @light;
-    color: #000;
+    background-color: @darkest;
+    color           : #fff;
   }
+  &:active {
+    background-color: @dark;
+  }
+  &:focus {
+    background-color: @dark;
+  }
+}
+.btn-default:active:focus {
+  color           : #fff;
+  background-color: @darkest;
+  border-color    : transparent;
 }
 .scrap-title {
   h2 {
@@ -50,8 +64,19 @@ span {
   a {
     color: #eee;
     &:hover {
-      color: #888;
+      color: @darkest;
     }
   }
   background-color: @dark;
+}
+.jumbotron {
+  background-color: @lightest;
+}
+ ::selection {
+  background: @lightest;
+  /* WebKit/Blink Browsers */
+}
+ ::-moz-selection {
+  background: @lightest;
+  /* Gecko Browsers */
 }

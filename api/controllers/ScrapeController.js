@@ -1,6 +1,6 @@
 module.exports = {
-  home: function(req, res) {
-    Scrape.query('SELECT * FROM scrape ORDER BY RAND() LIMIT 5', function(err, results) {
+  home: function (req, res) {
+    Scrape.query('SELECT * FROM scrape ORDER BY RAND() LIMIT 5', function (err, results) {
       // console.log(results);
       if (err) {
         console.log(err);
@@ -16,25 +16,26 @@ module.exports = {
       return res.view('homepage', data);
     });
   },
-  index: function(req, res) {
+  index: function (req, res) {
     var id = req.param('scrape_id');
-    Scrape.find({
+    Scrape.findOne({
       scrapeId: id
-    }).exec(function(err, result) {
+    }).exec(function (err, result) {
       if (err) {
         console.log(err);
-        return res.badRequest('Scrape not found.');
+        return res.serverError('Scrape not found.');
       } else {
-        return res.view('scrape/default', result[0]);
+        //console.log(result);
+        return res.view('scrape/default', result);
       }
     });
   },
-  random: function(req, res) {
-    Scrape.query('SELECT * FROM scrape ORDER BY RAND() LIMIT 1', function(err, result) {
+  random: function (req, res) {
+    Scrape.query('SELECT * FROM scrape ORDER BY RAND() LIMIT 1', function (err, result) {
       // console.log(results);
       if (err) {
         console.log(err);
-        return res.serverError(err);
+        return res.serverError('Something went wrong.');
       }
       // console.log(result[0].scrapeId);
       var url = '/scrape/' + result[0].scrapeId;
