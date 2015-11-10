@@ -15,4 +15,4 @@ A demo is currently set up [here](http://h2490047.stratoserver.net:3000). You're
 * Set up a database of your choice
 * Add it by editing the aptly named entry 'eli5-mysql' in config/connections.js. I preferred MySQL because of ease of setup.
 * Lift the app: $ sails lift
-* Navigate your browser to http://localhost:1337/ and check out the app
+* Navigate your browser to [http://localhost:1337](http://localhost:1337/) and check out the app
