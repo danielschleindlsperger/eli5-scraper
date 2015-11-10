@@ -5,7 +5,7 @@ A [Sails](http://sailsjs.org) application that scrapes posts from [/r/explainlik
 # Installation
 
 * Install [Node.js](https://nodejs.org)
-* Install Git and clone projects: $ git clone https://github.com/danielschleindlsperger/eli5-scraper.git
+* Install Git and clone project: $ git clone https://github.com/danielschleindlsperger/eli5-scraper.git
 * Navigate to directory $ cd eli5-scraper
 * Install Sailsjs framework: $ npm install -g sails
 * Install Node dependencies: $ npm install
