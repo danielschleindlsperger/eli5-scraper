@@ -1,23 +1,24 @@
 <!-- Default home page -->
 <div class="container" onload=share.addURI()>
-<%- include header.ejs %>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="jumbotron">
-        <section>Scrapes are interesting questions posted on <a href="http://reddit.com/r/explainlikeimfive">/r/explainlikeimfive</a> and their most popular answers. Check out a few examples below!</section>
+  <%- include header.ejs %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="jumbotron">
+          <section>Scrapes are interesting questions posted on <a href="http://reddit.com/r/explainlikeimfive">/r/explainlikeimfive</a> and their most popular answers. Check out a few examples below!</section>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="list-group">
-        <% for(var i=0; i<titles.length; i++) { %>
-          <a class="list-group-item" href='scrape/<%= ids[i] %>'>
-            <%= titles[i] %>
-          </a>
-          <% } %>
+    <%- include randomScrape.ejs %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="list-group">
+            <% for(var i=0; i<titles.length; i++) { %>
+              <a class="list-group-item" href='scrape/<%= ids[i] %>'>
+                <%= titles[i] %>
+              </a>
+              <% } %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 </div>
 <%- include footer.ejs %>
