@@ -7,10 +7,10 @@ module.exports = {
       unique: true
     },
     title: {
-      type: 'string'
+      type: 'text'
     },
     upvotes: {
-      type: 'integer'
+      type: 'string'
     },
     topAnswer: {
       type: 'text'

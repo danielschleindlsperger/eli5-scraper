@@ -9,10 +9,13 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 module.exports.bootstrap = function (cb) {
-  ScrapeService.scrapeFrontpage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=all');
+  // scrape top of all time at app start
+  ScrapeService.scrapePage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=all');
+
+  // scrape top of the day everyday
   var CronJob = require('cron').CronJob;
   var job = new CronJob('0 0 12 * * *', function () {
-    ScrapeService.scrapeFrontpage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=day');
+    ScrapeService.scrapePage('https://www.reddit.com/r/explainlikeimfive/top/?sort=top&t=day');
   }, null, true, 'Europe/Berlin');
 
   // It's very important to trigger this callback method when you are finished
